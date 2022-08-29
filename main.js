@@ -15,7 +15,7 @@ function movingRightSloder(){
     setTimeout(() => {
         slideRightWrapper.style.transform=`translateY(${-120*selectedSlide}px)`
         slideWrapper.style.transform=`translateX(${-100*selectedSlide}vw)`
-        slideRightWrapper.style.overflowY='hidden'
+        
         initialiseSlideRight()
         slideRights[selectedSlide].classList.add('selected')        
         selectedSlide++;
@@ -29,5 +29,14 @@ function movingRightSloder(){
     }, 4000);
     
 }
+
+slideRights.forEach((slide, index)=>{
+    slide.addEventListener('click',()=>{
+        selectedSlide=index
+        initialiseSlideRight()
+        slideRights[selectedSlide].classList.add('selected')  
+        slideWrapper.style.transform=`translateX(${-100*selectedSlide}vw)` 
+    })
+})
 
 movingRightSloder()
